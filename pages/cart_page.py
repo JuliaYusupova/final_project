@@ -13,7 +13,7 @@ class Cart_page(Base):
 
     # Locators
 
-    order_button = "(//button[@class='e11203e30 css-1pszki0-Button--StyledButton-Button--Button ekx3zbi0'])[1]"
+    order_button = "//span[contains(text(), 'Перейти к оформлению')]"
     guest = "//span[contains(text(), 'Продолжить как гость')]"
 
     # Getters

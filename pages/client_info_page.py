@@ -19,10 +19,10 @@ class Client_info_page(Base):
     last_name = "//input[@name='contact-form_lastName']"
     telephone = "//input[@name='contact-form_phone']"
     self_pickup = "(//label[@data-meta-name='RadioButton'])[1]"
-    upon_receipt = "//*[@id='__next']/div/div[2]/div/div/div/div/div[1]/div[3]/div/div/div[2]/div/div[3]/div/div[1]/div[2]/label[2]"
-    finish_button = "//button[@class='e1jq023s0 css-eb7y16-Button--StyledButton-Button--Button ekx3zbi0']"
-    pick_up_point = "//button[@class='e11203e30 css-11x0eg1-Button--StyledButton-Button--Button ekx3zbi0']"
-    shop_button = "(//button[@data-meta-name='SelfDeliveryStoresList__select-button'])[1]"
+    upon_receipt = "//span[contains(text(), 'Наличными')]"
+    finish_button = "(//span[contains(text(), 'Оформить')])[1]"
+    pick_up_point = "//span[contains(text(), 'Выбрать пункт')]"
+    shop_button = "(//span[contains(text(), 'Выбрать')])[1]"
 
 
 
@@ -95,7 +95,9 @@ class Client_info_page(Base):
         self.input_last_name("Тестович")
         self.input_telephone("+7 (979) 555-12-65")
         self.click_self_pickup()
+        self.driver.execute_script("window.scrollTo(0, 1200);")
         self.click_pick_up_point()
+        time.sleep(2)
         self.click_shop_button()
         time.sleep(2)
         self.driver.execute_script("window.scrollTo(0, 1800);")

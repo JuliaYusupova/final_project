@@ -15,7 +15,7 @@ class Finish_page(Base):
 
     # Locators
 
-    title_finish = "//*[@id='__next']/div[1]/main/div[1]/div/div[1]/div/div/span"
+    title_finish = "//span[contains(@class, 'css-13eo1xz-StyledTypography')]"
 
     # Getters
 

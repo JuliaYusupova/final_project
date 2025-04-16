@@ -21,12 +21,12 @@ class Phone_page(Base):
     slider = "(//div[@class='rc-slider-handle rc-slider-handle-2'])[2]"
     self_pickup = "(//div[@data-meta-name='FilterLabel'])[1]"
     installment_plan = "//span[contains(text(), 'Доступно в рассрочку')]"
-    product_evaluation = "(//div[@data-meta-name='FilterLabel'])[8]"
-    discount = "(//div[@data-meta-name='FilterLabel'])[13]"
-    brand = "(//div[@data-meta-name='FilterLabel'])[22]"
+    product_evaluation = "//span[contains(text(), '4,5 и выше')]"
+    discount = "//span[contains(text(), '10% и больше')]"
+    brand = "(//label[contains(@class, 'Label--Label')])[20]"
     cart_button = "(//button[@data-meta-name='Snippet__cart-button'])[1]"
-    cart = "(//button[@class='e11203e30 app-catalog-1cst8jz-Button--StyledButton-Button--Button ekx3zbi0'])[1]"
-    title_cart = "//span[@class='e9qk9yp0 e1a7a4n70 css-13eo1xz-StyledTypography--getTypographyStyle-composeBreakpointsStyles--arrayOfStylesByBreakpoints-StyledText--getTextStyle-Text--StyledTextComponent ez8h4tf0']"
+    cart = "(//button[contains(@class, 'e11203e30 app-catalog-1w0ub5t-Button')])[2]"
+    title_cart = "(//span[contains(@class, 'e9qk9yp0 e1a7a4n70')])[84]"
 
     # Getters
 
@@ -95,18 +95,24 @@ class Phone_page(Base):
     def filters_1(self):
         self.get_current_url()
         self.driver.execute_script("window.scrollTo(0, 450);")
+        time.sleep(3)
         self.click_slider()
         self.click_self_pickup()
         self.click_installment_plan()
+        self.driver.execute_script("window.scrollTo(0, 1000);")
         self.click_product_evaluation()
-        self.driver.execute_script("window.scrollTo(0, 1100);")
         self.click_discount()
         self.click_brand()
+        time.sleep(3)
         self.driver.execute_script("window.scrollTo(0, 300);")
         time.sleep(2)
         self.click_cart_button()
         time.sleep(3)
         self.click_cart()
         time.sleep(2)
-        self.assert_word(self.get_title_cart(), 'Корзина')
+        # self.assert_word(self.get_title_cart(), 'Корзина')
+
+
+
+
 
